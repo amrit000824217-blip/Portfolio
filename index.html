@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+
+<title>Amrit | Personal Portfolio</title>
+
+<meta name="description" content="Amrit's personal portfolio — creativity, technology, digital growth and ambition.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080808;
+    --text: #f5f5f5;
+    --muted: #a4a4a4;
+    --glass: rgba(255,255,255,0.065);
+    --border: rgba(255,255,255,0.13);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND VIDEO */
+
+.video-background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -3;
+    opacity: 0.32;
+}
+
+.video-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.65),
+            rgba(0,0,0,0.80)
+        );
+}
+
+/* AMBIENT LIGHT */
+
+.ambient {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.055);
+    filter: blur(100px);
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* NAVIGATION */
+
+nav {
+    width: min(1100px, 92%);
+    margin: auto;
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #999;
+}
+
+.nav-status {
+    font-size: 12px;
+    color: #ccc;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.04);
+    padding: 10px 15px;
+    border-radius: 30px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #b8b8b8;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+/* MAIN */
+
+main {
+    width: min(850px, 92%);
+    margin: 38px auto 65px;
+}
+
+/* GLASS CARD */
+
+.glass-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.25);
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 40px 25px 38px;
+    animation: appear 1s ease both;
+}
+
+.profile-wrap {
+    width: 155px;
+    height: 155px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.8),
+        rgba(255,255,255,0.06)
+    );
+    box-shadow: 0 0 50px rgba(255,255,255,0.08);
+}
+
+.profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    border-radius: 50%;
+    border: 3px solid #151515;
+    display: block;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #bcbcbc;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(38px, 8vw, 65px);
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    line-height: 1.05;
+}
+
+h1 span {
+    color: #8f8f8f;
+}
+
+.tagline {
+    margin: 18px auto 0;
+    color: #c0c0c0;
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 480px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 27px;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.btn-primary {
+    color: #111;
+    background: #f3f3f3;
+}
+
+.btn-secondary {
+    color: #f5f5f5;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.85;
+}
+
+/* SECTIONS */
+
+.section {
+    margin-top: 18px;
+    padding: 27px;
+    animation: appear 1s ease both;
+}
+
+.section-label {
+    color: #929292;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 17px;
+}
+
+.section h2 {
+    font-size: 23px;
+    margin-bottom: 13px;
+    letter-spacing: -0.5px;
+}
+
+.about-text {
+    color: #bcbcbc;
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+/* INFO GRID */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.info-box {
+    padding: 20px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.035);
+    border-radius: 17px;
+}
+
+.info-box .label {
+    color: #999;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.info-box .value {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.info-box .subvalue {
+    color: #a6a6a6;
+    font-size: 12px;
+    margin-top: 6px;
+    line-height: 1.6;
+}
+
+/* CONTACT */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.contact-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 19px;
+    border-radius: 17px;
+    text-decoration: none;
+    color: white;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.035);
+    transition: 0.3s ease;
+    min-width: 0;
+}
+
+.contact-btn:hover {
+    background: rgba(255,255,255,0.10);
+    transform: translateY(-4px);
+}
+
+.contact-icon {
+    font-size: 22px;
+}
+
+.contact-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.contact-hint {
+    font-size: 11px;
+    color: #999;
+    margin-top: 5px;
+    overflow-wrap: anywhere;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    color: #777;
+    font-size: 11px;
+    padding: 30px 15px 35px;
+    line-height: 1.8;
+}
+
+footer span {
+    color: #ddd;
+}
+
+/* ANIMATION */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    nav {
+        padding: 20px 0;
+    }
+
+    main {
+        margin-top: 20px;
+        margin-bottom: 35px;
+    }
+
+    .hero {
+        padding: 32px 18px;
+    }
+
+    .profile-wrap {
+        width: 130px;
+        height: 130px;
+    }
+
+    h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .tagline {
+        font-size: 13px;
+    }
+
+    .section {
+        padding: 21px;
+        border-radius: 22px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-btn {
+        flex-direction: row;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .contact-icon {
+        width: 30px;
+        text-align: center;
+    }
+
+    .contact-details {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .nav-status {
+        font-size: 10px;
+        padding: 9px 11px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND VIDEO
+     Upload your video as background.mp4 -->
+<video class="video-background"
+       autoplay
+       muted
+       loop
+       playsinline
+       preload="metadata"
+       poster="profile.jpg">
+    <source src="background.mp4" type="video/mp4">
+</video>
+
+<div class="video-overlay"></div>
+<div class="ambient"></div>
+
+<nav>
+    <div class="logo">AMRIT<span>.</span></div>
+
+    <div class="nav-status">
+        <span class="status-dot"></span>
+        PERSONAL PORTFOLIO
+    </div>
+</nav>
+
+<main>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero glass-card">
+
+        <div class="profile-wrap">
+            <img
+                src="profile.jpg"
+                alt="Amrit's portrait"
+                class="profile"
+            >
+        </div>
+
+        <div class="eyebrow">INTRODUCING MYSELF</div>
+
+        <h1>Hey, I'm <span>Amrit.</span></h1>
+
+        <p class="tagline">
+            Curious mind. Creative thinking.
+            Building my own path in the digital world.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#about" class="btn btn-primary">
+                Discover More ↘
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+                Contact Me ↗
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+
+    <section class="section glass-card" id="about">
+
+        <div class="section-label">01 — ABOUT ME</div>
+
+        <h2>A little about who I am.</h2>
+
+        <p class="about-text">
+            I'm Amrit, someone who enjoys exploring technology,
+            creativity, and the possibilities of the internet.
+            I'm interested in digital platforms, online growth,
+            and learning new skills. My goal is to keep improving,
+            turn ideas into reality, and create something meaningful
+            through consistent effort.
+        </p>
+
+    </section>
+
+
+    <!-- EDUCATION SECTION -->
+
+    <section class="section glass-card" id="education">
+
+        <div class="section-label">02 — EDUCATION</div>
+
+        <h2>My academic background.</h2>
+
+        <div class="info-grid">
+
+            <div class="info-box">
+                <div class="label">SCHOOL</div>
+
+                <div class="value">
+                    JURI HIGH SCHOOL
+                </div>
+
+                <div class="subvalue">
+                    Bankey Bazar, Gaya, Bihar
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="label">PERCENTAGE</div>
+
+                <div class="value">63%</div>
+
+                <div class="subvalue">
+                    Academic achievement
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTERESTS SECTION -->
+
+    <section class="section glass-card">
+
+        <div class="section-label">03 — MY INTERESTS</div>
+
+        <h2>Things that inspire me.</h2>
+
+        <div class="info-grid">
+
+            <div class="info-box">
+                <div class="value">Digital Creativity</div>
+                <div class="subvalue">
+                    Design, content and new ideas.
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="value">Technology</div>
+                <div class="subvalue">
+                    Websites, tools and digital experiences.
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="value">Online Growth</div>
+                <div class="subvalue">
+                    Exploring digital platforms and audiences.
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="value">Self Development</div>
+                <div class="subvalue">
+                    Learning, discipline and improvement.
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT SECTION -->
+
+    <section class="section glass-card" id="contact">
+
+        <div class="section-label">04 — GET IN TOUCH</div>
+
+        <h2>Let's connect.</h2>
+
+        <p class="about-text" style="margin-bottom:22px;">
+            Find me on my social platforms or send me an email.
+        </p>
+
+        <div class="contact-grid">
+
+            <!-- Replace with your real Instagram URL -->
+            <a
+                href="https://www.instagram.com/@ay1cr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-btn"
+            >
+                <div class="contact-icon">◎</div>
+
+                <div class="contact-details">
+                    <div class="contact-name">Instagram</div>
+                    <div class="contact-hint">Follow my journey ↗</div>
+                </div>
+            </a>
+
+
+            <!-- Replace with your real Telegram URL -->
+            <a
+                href="https://t.me/@tgtorr"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-btn"
+            >
+                <div class="contact-icon">↗</div>
+
+                <div class="contact-details">
+                    <div class="contact-name">Telegram</div>
+                    <div class="contact-hint">Let's connect ↗</div>
+                </div>
+            </a>
+
+
+            <!-- Replace with your real email -->
+            <a
+                href="mailto:amrit000824217@gmail.com"
+                class="contact-btn"
+            >
+                <div class="contact-icon">✉</div>
+
+                <div class="contact-details">
+                    <div class="contact-name">Email</div>
+                    <div class="contact-hint">Send a message ↗</div>
+                </div>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <span>AMRIT.</span> — Personal Portfolio
+    <br>
+    Designed with simplicity & intention.
+    <br><br>
+    © <span id="year"></span> Amrit. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+// Attempt to play the background video.
+// Autoplay requires the video to be muted in most browsers.
+const video = document.querySelector(".video-background");
+
+video.play().catch(() => {
+    // Some browsers may block autoplay.
+    // The rest of the portfolio remains usable.
+});
+</script>
+
+</body>
+  </html>
